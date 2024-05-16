@@ -1,0 +1,547 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box ;
+}
+
+
+:root {
+  --bleuclair:#ADD8E6;
+  --brun:#8B4513;
+  --blue: #2a2185;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--bleuclair);
+  border-left: 10px solid var(--bleuclair);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.navi.active{
+    width:80px;
+}
+.navi ul {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+.navi ul li {
+  position: relative !important;
+  width: 100% !important;
+  list-style: none !important;
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+}
+
+.navi ul li:hover,
+.navi ul li.hovered {
+  background-color: var(--white);
+}
+
+.navi ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navi ul li a {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  display: flex !important;
+  text-decoration: none !important;
+  color: var(--black2)!important;
+}
+
+.navi ul li:hover a,
+.navi ul li.hovered a {
+  color: var(--blue);
+}
+
+.navi ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navi ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navi ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+
+.navi ul li:hover a::before,
+.navi ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.navi ul li:hover a::after,
+.navi ul li.hovered a::after {
+ content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -28px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.toggle.active {
+    right: 205px;
+  }
+.chart-container {
+    display: flex;
+
+}
+
+.container-fluid h1{
+  color: var(--blue);
+  font-family: 'Arial', sans-serif;
+  margin-top:50px;
+  margin-left:30px;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.top {
+  width: 80%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-left: 290px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+ /* ======================= Cards ====================== */
+ .cardBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top:20px;
+  margin-left: 40px;
+}
+
+
+.card {
+  position: relative;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: var(--bleuclair);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--bleuclair);
+  color: var(--white);
+}
+
+.card .numbers {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.card .cardName {
+  font-size: 1.1rem;
+  color: var(--black2);
+  margin-top: 10px;
+}
+
+.card .iconBx {
+  font-size: 2.5rem;
+  color: var(--black2);
+}
+.pie-chart {
+    margin-top:20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+#myChart{
+    margin-top:20px;
+    margin-left:20px;
+    margin-right: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dark-theme {
+    --bleuclair: #222;
+    --white: #222;
+
+}
+.spinner-bubble {
+    width: 100px;
+    height: 100px;
+    position:fixed;
+    top:50%;
+    left:50%;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: #22bb37;
+    animation: spinner 0.8s linear infinite;
+  }
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  #spinner {
+    display: none;
+  }
+  /*=====================Page users===================================*/
+  .card-header {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    width:60%;
+    border-radius: 10px;
+    /*margin-left: 80px;*/
+    margin-top: 70px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .btn {
+    background-color: #ddd;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 930px;
+    margin-top:0px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display:none;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+.table {
+    width: 60%;
+    border-collapse: collapse;
+    /*margin-left:80px;*/
+
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    font-weight: bold;
+    /*border: 1px solid #ccc;*/
+}
+.table tr:first-child,
+.table td {
+    border-top: 1px solid #ccc;
+}
+
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr.loubna:hover {
+    background-color: #000; /* Votre couleur de fond pour le survol */
+}
+
+/*.container-fluid {
+    border-left: 2px solid #ccc;
+    border-radius: 10px;
+    padding-left: 15px;
+}*/
+.delete-icon {
+
+    align-items: center;
+}
+
+.delete-icon ion-icon{
+    color: rgb(245, 18, 18);
+    font-size: 40px;
+}
+
+.search-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-icon ion-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    background-color: skyblue;
+}
+
+.search-icon ion-icon:hover {
+    opacity: 0.7; /* Réduire légèrement l'opacité de l'icône lorsqu'elle est survolée */
+}
+.chart1 {
+    position: fixed;
+    top: 135px; /* Ajustez cette valeur pour positionner verticalement le graphique */
+    right: 10px; /* Ajustez cette valeur pour positionner horizontalement le graphique */
+    z-index: 999; /* Assurez-vous que le graphique reste au-dessus du contenu de la page */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white; /* Ajoutez une couleur de fond au besoin */
+}
+ /* ======================= Experts ========================== */
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+.action-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.action-button ion-icon {
+    font-size: 24px;
+    color: #666; /* Couleur par défaut */
+    transition: color 0.3s ease-in-out; /* Transition pour l'effet de surbrillance */
+}
+
+.action-button:hover ion-icon {
+    color: #ffc107; /* Couleur au survol du bouton */
+}
+
+.delete-button:hover ion-icon {
+    color: #dc3545; /* Couleur de suppression au survol */
+}
+
+.edit-button:hover ion-icon {
+    color: #007bff; /* Couleur de modification au survol */
+}
+
+/* ====================== Responsive Design ========================== */
+
+@media (max-width: 991px) {
+  .chartsBx{
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .navi {
+    left: -300px;
+  }
+  .navi.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+  .chart-container {
+        flex-direction: column;
+    }
+
+    #myChart {
+        width: 100%;
+        height: 400px;
+    }
+
+    .pie-chart {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navi {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navi.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+}
+
+}
